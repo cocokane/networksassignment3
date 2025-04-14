@@ -9,7 +9,7 @@ import time, os
 from mininet.node import OVSController, OVSSwitch
 
 #############################################
-# Topology Definition (Unchanged)
+# Topology Definition 
 #############################################
 class CustomRoutingTopoNAT(Topo):
     def build(self):
@@ -48,7 +48,7 @@ class CustomRoutingTopoNAT(Topo):
         self.addLink(s1, s3, delay='7ms')
 
 #####################################################
-# NAT Setup on H9 with DNAT Rules
+# NAT Setup on H9 
 #####################################################
 def setup_nat_on_h9(net):
     h1 = net.get('h1')
@@ -83,7 +83,7 @@ def setup_nat_on_h9(net):
     h9.cmd("iptables -A FORWARD -i h9-eth0 -o br-int -m state --state RELATED,ESTABLISHED -j ACCEPT")
     h9.cmd("iptables -A FORWARD -i br-int -o h9-eth0 -j ACCEPT")
 
-    # === DNAT Rules for External → Internal traffic ===
+    # DNAT Rules for External → Internal traffic
     # Forward 5001 (from external to h1)
     h9.cmd("iptables -t nat -A PREROUTING -i h9-eth0 -p tcp --dport 5001 -j DNAT --to-destination 10.1.1.2:5001")
     h9.cmd("iptables -A FORWARD -p tcp -d 10.1.1.2 --dport 5001 -j ACCEPT")
@@ -123,7 +123,7 @@ def run_network():
     print(net.get('h6').cmd("ping -w 10 10.0.0.10"))
 
     # iPerf3 Tests
-    for i in range(2):
+    for i in range(3):
         info(f"\n+++ iPerf Test {i+1}: h1 (server) ⇐⇒ h6 (client) +++\n")
         net.get('h1').cmd("pkill -f iperf3")
         net.get('h6').cmd("pkill -f iperf3")

@@ -23,9 +23,9 @@ s1 s2 s3 s4 ...(5ms delay) (7ms delay) (7ms delay) (7ms delay) (5ms delay) (5ms 
 
 === Test 2: h2 → h3 ===
 
-=== Test 3: h8 → h1 (via DNAT) ===
+=== Test 3: h8 → h1 ===
 
-=== Test 4: h6 → h2 (via DNAT) ===
+=== Test 4: h6 → h2 ===
 
 +++ iPerf Test 1: h1 (server) ⇐⇒ h6 (client) +++
 
