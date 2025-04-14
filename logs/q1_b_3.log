@@ -153,3 +153,24 @@ PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
 rtt min/avg/max/mdev = 36.352/43.517/51.413/3.830 ms
 
 mininet> 
+Interrupt
+mininet> 
+Interrupt
+mininet> 
+Interrupt
+mininet> 
+Interrupt
+mininet> 
+Interrupt
+mininet> 
+Interrupt
+mininet> 
+*** Stopping 1 controllers
+c0 
+*** Stopping 13 links
+.............
+*** Stopping 4 switches
+s1 s2 s3 s4 
+*** Stopping 8 hosts
+h1 h2 h3 h4 h5 h6 h7 h8 
+*** Done

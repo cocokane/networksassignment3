@@ -63,17 +63,17 @@ def run():
     print("Waiting 30 seconds for STP to converge...")
     time.sleep(30)
     for i in range(3):
-        # print(f"\nRound {i+1}: Ping h3 -> h1")
-        # print(h3.cmd('ping -w 30 %s' % h1.IP()))
-        # time.sleep(30)
+        print(f"\nRound {i+1}: Ping h3 -> h1")
+        print(h3.cmd('ping -w 30 %s' % h1.IP()))
+        time.sleep(30)
 
         # print(f"\nRound {i+1}: Ping h5 -> h7")
         # print(h5.cmd('ping -w 30 %s' % h7.IP()))
         # time.sleep(30)
 
-        print(f"\nRound {i+1}: Ping h8 -> h2")
-        print(h8.cmd('ping -w 30 %s' % h2.IP()))
-        time.sleep(30)
+        # print(f"\nRound {i+1}: Ping h8 -> h2")
+        # print(h8.cmd('ping -w 30 %s' % h2.IP()))
+        # time.sleep(30)
 
     CLI(net)
     net.stop()
