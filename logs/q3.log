@@ -1,0 +1,587 @@
+Starting simulation...
+
+EVENT time: 0.000000,  type: 0, node: 3 
+Node 3 @ 0.000: Initializing routing table.
+Node 3 @ 0.000: Initialization complete. Initial DV = { 7 999 2 0 }
+
+              Distance Table for Node 3 (via neighbor) @ time 0.000
+   D3 |    0       2   
+------|-----------
+dest 0|     7      - 
+dest 1|     -      - 
+dest 2|     -      2 
+
+   Node 3 @ 0.000: Preparing to send DV to neighbor 0
+    TOLAYER2: source: 3, dest: 0, contents: 7 999 2 0
+   Node 3 @ 0.000: Preparing to send DV to neighbor 2
+    TOLAYER2: source: 3, dest: 2, contents: 7 999 2 0
+
+EVENT time: 0.000000,  type: 0, node: 2 
+Node 2 @ 0.000: Initializing routing table.
+Node 2 @ 0.000: Initialization complete. Initial DV = { 3 1 0 2 }
+
+                    Distance Table for Node 2 (via neighbor) @ time 0.000
+   D2 |    0       1       3   
+------|-------------------
+dest 0|     3      -      - 
+dest 1|     -      1      - 
+dest 3|     -      -      2 
+
+   Node 2 @ 0.000: Preparing to send DV to neighbor 0
+    TOLAYER2: source: 2, dest: 0, contents: 3 1 0 2
+   Node 2 @ 0.000: Preparing to send DV to neighbor 1
+    TOLAYER2: source: 2, dest: 1, contents: 3 1 0 2
+   Node 2 @ 0.000: Preparing to send DV to neighbor 3
+    TOLAYER2: source: 2, dest: 3, contents: 3 1 0 2
+
+EVENT time: 0.000000,  type: 0, node: 1 
+Node 1 @ 0.000: Initializing routing table.
+Node 1 @ 0.000: Initialization complete. Initial DV = { 1 0 1 999 }
+
+              Distance Table for Node 1 (via neighbor) @ time 0.000
+   D1 |    0       2   
+------|-----------
+dest 0|     1      - 
+dest 2|     -      1 
+dest 3|     -      - 
+
+   Node 1 @ 0.000: Preparing to send DV to neighbor 0
+    TOLAYER2: source: 1, dest: 0, contents: 1 0 1 999
+   Node 1 @ 0.000: Preparing to send DV to neighbor 2
+    TOLAYER2: source: 1, dest: 2, contents: 1 0 1 999
+
+EVENT time: 0.000000,  type: 0, node: 0 
+Node 0 @ 0.000: Initializing routing table.
+Node 0 @ 0.000: Initialization complete. Initial DV = { 0 1 3 7 }
+
+                    Distance Table for Node 0 (via neighbor) @ time 0.000
+   D0 |    1       2       3   
+------|----------------------------------
+dest 1|     1      -      - 
+dest 2|     -      3      - 
+dest 3|     -      -      7 
+
+   Node 0 @ 0.000: Preparing to send DV to neighbor 1
+    TOLAYER2: source: 0, dest: 1, contents: 0 1 3 7
+   Node 0 @ 0.000: Preparing to send DV to neighbor 2
+    TOLAYER2: source: 0, dest: 2, contents: 0 1 3 7
+   Node 0 @ 0.000: Preparing to send DV to neighbor 3
+    TOLAYER2: source: 0, dest: 3, contents: 0 1 3 7
+
+EVENT time: 1.001976,  type: 1 
+Node 0 @ 1.002: Received routing update from Node 1. DV = { 1 0 1 999 }
+   Node 0 @ 1.002: Updating cost to 0 via 1. Old: 999, New: 2
+   Node 0 @ 1.002: Updating cost to 2 via 1. Old: 999, New: 2
+   Node 0 @ 1.002: Distance table updated. Recalculating minimum costs...
+   Node 0 @ 1.002: Minimum cost vector CHANGED. New DV = { 0 1 2 7 }. Notifying neighbors.
+
+                    Distance Table for Node 0 (via neighbor) @ time 1.002
+   D0 |    1       2       3   
+------|----------------------------------
+dest 1|     1      -      - 
+dest 2|     2      3      - 
+dest 3|     -      -      7 
+
+   Node 0 @ 1.002: Preparing to send DV to neighbor 1
+    TOLAYER2: source: 0, dest: 1, contents: 0 1 2 7
+   Node 0 @ 1.002: Preparing to send DV to neighbor 2
+    TOLAYER2: source: 0, dest: 2, contents: 0 1 2 7
+   Node 0 @ 1.002: Preparing to send DV to neighbor 3
+    TOLAYER2: source: 0, dest: 3, contents: 0 1 2 7
+
+EVENT time: 1.002778,  type: 1 
+Node 2 @ 1.003: Received routing update from Node 0. DV = { 0 1 3 7 }
+   Node 2 @ 1.003: Updating cost to 1 via 0. Old: 999, New: 4
+   Node 2 @ 1.003: Updating cost to 2 via 0. Old: 999, New: 6
+   Node 2 @ 1.003: Updating cost to 3 via 0. Old: 999, New: 10
+   Node 2 @ 1.003: Distance table updated. Recalculating minimum costs...
+   Node 2 @ 1.003: Minimum cost vector UNCHANGED. No update sent.
+
+                    Distance Table for Node 2 (via neighbor) @ time 1.003
+   D2 |    0       1       3   
+------|-------------------
+dest 0|     3      -      - 
+dest 1|     4      1      - 
+dest 3|    10      -      2 
+
+
+EVENT time: 1.003352,  type: 1 
+Node 2 @ 1.003: Received routing update from Node 1. DV = { 1 0 1 999 }
+   Node 2 @ 1.003: Updating cost to 0 via 1. Old: 999, New: 2
+   Node 2 @ 1.003: Updating cost to 2 via 1. Old: 999, New: 2
+   Node 2 @ 1.003: Distance table updated. Recalculating minimum costs...
+   Node 2 @ 1.003: Minimum cost vector CHANGED. New DV = { 2 1 0 2 }. Notifying neighbors.
+
+                    Distance Table for Node 2 (via neighbor) @ time 1.003
+   D2 |    0       1       3   
+------|-------------------
+dest 0|     3      2      - 
+dest 1|     4      1      - 
+dest 3|    10      -      2 
+
+   Node 2 @ 1.003: Preparing to send DV to neighbor 0
+    TOLAYER2: source: 2, dest: 0, contents: 2 1 0 2
+   Node 2 @ 1.003: Preparing to send DV to neighbor 1
+    TOLAYER2: source: 2, dest: 1, contents: 2 1 0 2
+   Node 2 @ 1.003: Preparing to send DV to neighbor 3
+    TOLAYER2: source: 2, dest: 3, contents: 2 1 0 2
+
+EVENT time: 1.003944,  type: 1 
+Node 2 @ 1.004: Received routing update from Node 3. DV = { 7 999 2 0 }
+   Node 2 @ 1.004: Updating cost to 0 via 3. Old: 999, New: 9
+   Node 2 @ 1.004: Updating cost to 2 via 3. Old: 999, New: 4
+   Node 2 @ 1.004: Distance table updated. Recalculating minimum costs...
+   Node 2 @ 1.004: Minimum cost vector UNCHANGED. No update sent.
+
+                    Distance Table for Node 2 (via neighbor) @ time 1.004
+   D2 |    0       1       3   
+------|-------------------
+dest 0|     3      2      9 
+dest 1|     4      1      - 
+dest 3|    10      -      2 
+
+
+EVENT time: 1.005540,  type: 1 
+Node 3 @ 1.006: Received routing update from Node 0. DV = { 0 1 3 7 }
+   Node 3 @ 1.006: Updating cost to 1 via 0. Old: 999, New: 8
+   Node 3 @ 1.006: Updating cost to 2 via 0. Old: 999, New: 10
+   Node 3 @ 1.006: Updating cost to 3 via 0. Old: 999, New: 14
+   Node 3 @ 1.006: Distance table updated. Recalculating minimum costs...
+   Node 3 @ 1.006: Minimum cost vector CHANGED. New DV = { 7 8 2 0 }. Notifying neighbors.
+
+              Distance Table for Node 3 (via neighbor) @ time 1.006
+   D3 |    0       2   
+------|-----------
+dest 0|     7      - 
+dest 1|     8      - 
+dest 2|    10      2 
+
+   Node 3 @ 1.006: Preparing to send DV to neighbor 0
+    TOLAYER2: source: 3, dest: 0, contents: 7 8 2 0
+   Node 3 @ 1.006: Preparing to send DV to neighbor 2
+    TOLAYER2: source: 3, dest: 2, contents: 7 8 2 0
+
+EVENT time: 1.007682,  type: 1 
+Node 1 @ 1.008: Received routing update from Node 0. DV = { 0 1 3 7 }
+   Node 1 @ 1.008: Updating cost to 1 via 0. Old: 999, New: 2
+   Node 1 @ 1.008: Updating cost to 2 via 0. Old: 999, New: 4
+   Node 1 @ 1.008: Updating cost to 3 via 0. Old: 999, New: 8
+   Node 1 @ 1.008: Distance table updated. Recalculating minimum costs...
+   Node 1 @ 1.008: Minimum cost vector CHANGED. New DV = { 1 0 1 8 }. Notifying neighbors.
+
+              Distance Table for Node 1 (via neighbor) @ time 1.008
+   D1 |    0       2   
+------|-----------
+dest 0|     1      - 
+dest 2|     4      1 
+dest 3|     8      - 
+
+   Node 1 @ 1.008: Preparing to send DV to neighbor 0
+    TOLAYER2: source: 1, dest: 0, contents: 1 0 1 8
+   Node 1 @ 1.008: Preparing to send DV to neighbor 2
+    TOLAYER2: source: 1, dest: 2, contents: 1 0 1 8
+
+EVENT time: 1.007831,  type: 1 
+Node 0 @ 1.008: Received routing update from Node 2. DV = { 3 1 0 2 }
+   Node 0 @ 1.008: Updating cost to 0 via 2. Old: 999, New: 6
+   Node 0 @ 1.008: Updating cost to 1 via 2. Old: 999, New: 4
+   Node 0 @ 1.008: Updating cost to 3 via 2. Old: 999, New: 5
+   Node 0 @ 1.008: Distance table updated. Recalculating minimum costs...
+   Node 0 @ 1.008: Minimum cost vector CHANGED. New DV = { 0 1 2 5 }. Notifying neighbors.
+
+                    Distance Table for Node 0 (via neighbor) @ time 1.008
+   D0 |    1       2       3   
+------|----------------------------------
+dest 1|     1      4      - 
+dest 2|     2      3      - 
+dest 3|     -      5      7 
+
+   Node 0 @ 1.008: Preparing to send DV to neighbor 1
+    TOLAYER2: source: 0, dest: 1, contents: 0 1 2 5
+   Node 0 @ 1.008: Preparing to send DV to neighbor 2
+    TOLAYER2: source: 0, dest: 2, contents: 0 1 2 5
+   Node 0 @ 1.008: Preparing to send DV to neighbor 3
+    TOLAYER2: source: 0, dest: 3, contents: 0 1 2 5
+
+EVENT time: 1.007984,  type: 1 
+Node 1 @ 1.008: Received routing update from Node 2. DV = { 3 1 0 2 }
+   Node 1 @ 1.008: Updating cost to 0 via 2. Old: 999, New: 4
+   Node 1 @ 1.008: Updating cost to 1 via 2. Old: 999, New: 2
+   Node 1 @ 1.008: Updating cost to 3 via 2. Old: 999, New: 3
+   Node 1 @ 1.008: Distance table updated. Recalculating minimum costs...
+   Node 1 @ 1.008: Minimum cost vector CHANGED. New DV = { 1 0 1 3 }. Notifying neighbors.
+
+              Distance Table for Node 1 (via neighbor) @ time 1.008
+   D1 |    0       2   
+------|-----------
+dest 0|     1      4 
+dest 2|     4      1 
+dest 3|     8      3 
+
+   Node 1 @ 1.008: Preparing to send DV to neighbor 0
+    TOLAYER2: source: 1, dest: 0, contents: 1 0 1 3
+   Node 1 @ 1.008: Preparing to send DV to neighbor 2
+    TOLAYER2: source: 1, dest: 2, contents: 1 0 1 3
+
+EVENT time: 1.008402,  type: 1 
+Node 0 @ 1.008: Received routing update from Node 3. DV = { 7 999 2 0 }
+   Node 0 @ 1.008: Updating cost to 0 via 3. Old: 999, New: 14
+   Node 0 @ 1.008: Updating cost to 2 via 3. Old: 999, New: 9
+   Node 0 @ 1.008: Distance table updated. Recalculating minimum costs...
+   Node 0 @ 1.008: Minimum cost vector UNCHANGED. No update sent.
+
+                    Distance Table for Node 0 (via neighbor) @ time 1.008
+   D0 |    1       2       3   
+------|----------------------------------
+dest 1|     1      4      - 
+dest 2|     2      3      9 
+dest 3|     -      5      7 
+
+
+EVENT time: 1.009117,  type: 1 
+Node 3 @ 1.009: Received routing update from Node 2. DV = { 3 1 0 2 }
+   Node 3 @ 1.009: Updating cost to 0 via 2. Old: 999, New: 5
+   Node 3 @ 1.009: Updating cost to 1 via 2. Old: 999, New: 3
+   Node 3 @ 1.009: Updating cost to 3 via 2. Old: 999, New: 4
+   Node 3 @ 1.009: Distance table updated. Recalculating minimum costs...
+   Node 3 @ 1.009: Minimum cost vector CHANGED. New DV = { 5 3 2 0 }. Notifying neighbors.
+
+              Distance Table for Node 3 (via neighbor) @ time 1.009
+   D3 |    0       2   
+------|-----------
+dest 0|     7      5 
+dest 1|     8      3 
+dest 2|    10      2 
+
+   Node 3 @ 1.009: Preparing to send DV to neighbor 0
+    TOLAYER2: source: 3, dest: 0, contents: 5 3 2 0
+   Node 3 @ 1.009: Preparing to send DV to neighbor 2
+    TOLAYER2: source: 3, dest: 2, contents: 5 3 2 0
+
+EVENT time: 2.005623,  type: 1 
+Node 3 @ 2.006: Received routing update from Node 0. DV = { 0 1 2 7 }
+   Node 3 @ 2.006: Updating cost to 2 via 0. Old: 10, New: 9
+   Node 3 @ 2.006: Distance table updated. Recalculating minimum costs...
+   Node 3 @ 2.006: Minimum cost vector UNCHANGED. No update sent.
+
+              Distance Table for Node 3 (via neighbor) @ time 2.006
+   D3 |    0       2   
+------|-----------
+dest 0|     7      5 
+dest 1|     8      3 
+dest 2|     9      2 
+
+
+EVENT time: 2.006749,  type: 1 
+Node 1 @ 2.007: Received routing update from Node 0. DV = { 0 1 2 7 }
+   Node 1 @ 2.007: Updating cost to 2 via 0. Old: 4, New: 3
+   Node 1 @ 2.007: Distance table updated. Recalculating minimum costs...
+   Node 1 @ 2.007: Minimum cost vector UNCHANGED. No update sent.
+
+              Distance Table for Node 1 (via neighbor) @ time 2.007
+   D1 |    0       2   
+------|-----------
+dest 0|     1      4 
+dest 2|     3      1 
+dest 3|     8      3 
+
+
+EVENT time: 2.007994,  type: 1 
+Node 1 @ 2.008: Received routing update from Node 0. DV = { 0 1 2 5 }
+   Node 1 @ 2.008: Updating cost to 3 via 0. Old: 8, New: 6
+   Node 1 @ 2.008: Distance table updated. Recalculating minimum costs...
+   Node 1 @ 2.008: Minimum cost vector UNCHANGED. No update sent.
+
+              Distance Table for Node 1 (via neighbor) @ time 2.008
+   D1 |    0       2   
+------|-----------
+dest 0|     1      4 
+dest 2|     3      1 
+dest 3|     6      3 
+
+
+EVENT time: 2.008264,  type: 1 
+Node 2 @ 2.008: Received routing update from Node 0. DV = { 0 1 2 7 }
+   Node 2 @ 2.008: Updating cost to 2 via 0. Old: 6, New: 5
+   Node 2 @ 2.008: Distance table updated. Recalculating minimum costs...
+   Node 2 @ 2.008: Minimum cost vector UNCHANGED. No update sent.
+
+                    Distance Table for Node 2 (via neighbor) @ time 2.008
+   D2 |    0       1       3   
+------|-------------------
+dest 0|     3      2      9 
+dest 1|     4      1      - 
+dest 3|    10      -      2 
+
+
+EVENT time: 2.008486,  type: 1 
+Node 0 @ 2.008: Received routing update from Node 2. DV = { 2 1 0 2 }
+   Node 0 @ 2.008: Updating cost to 0 via 2. Old: 6, New: 5
+   Node 0 @ 2.008: Distance table updated. Recalculating minimum costs...
+   Node 0 @ 2.008: Minimum cost vector UNCHANGED. No update sent.
+
+                    Distance Table for Node 0 (via neighbor) @ time 2.008
+   D0 |    1       2       3   
+------|----------------------------------
+dest 1|     1      4      - 
+dest 2|     2      3      9 
+dest 3|     -      5      7 
+
+
+EVENT time: 2.009098,  type: 1 
+Node 0 @ 2.009: Received routing update from Node 1. DV = { 1 0 1 8 }
+   Node 0 @ 2.009: Updating cost to 3 via 1. Old: 999, New: 9
+   Node 0 @ 2.009: Distance table updated. Recalculating minimum costs...
+   Node 0 @ 2.009: Minimum cost vector UNCHANGED. No update sent.
+
+                    Distance Table for Node 0 (via neighbor) @ time 2.009
+   D0 |    1       2       3   
+------|----------------------------------
+dest 1|     1      4      - 
+dest 2|     2      3      9 
+dest 3|     9      5      7 
+
+
+EVENT time: 2.009203,  type: 1 
+Node 3 @ 2.009: Received routing update from Node 0. DV = { 0 1 2 5 }
+   Node 3 @ 2.009: Updating cost to 3 via 0. Old: 14, New: 12
+   Node 3 @ 2.009: Distance table updated. Recalculating minimum costs...
+   Node 3 @ 2.009: Minimum cost vector UNCHANGED. No update sent.
+
+              Distance Table for Node 3 (via neighbor) @ time 2.009
+   D3 |    0       2   
+------|-----------
+dest 0|     7      5 
+dest 1|     8      3 
+dest 2|     9      2 
+
+
+EVENT time: 2.009551,  type: 1 
+Node 2 @ 2.010: Received routing update from Node 1. DV = { 1 0 1 3 }
+   Node 2 @ 2.010: Updating cost to 3 via 1. Old: 999, New: 4
+   Node 2 @ 2.010: Distance table updated. Recalculating minimum costs...
+   Node 2 @ 2.010: Minimum cost vector UNCHANGED. No update sent.
+
+                    Distance Table for Node 2 (via neighbor) @ time 2.010
+   D2 |    0       1       3   
+------|-------------------
+dest 0|     3      2      9 
+dest 1|     4      1      - 
+dest 3|    10      4      2 
+
+
+EVENT time: 2.010260,  type: 1 
+Node 2 @ 2.010: Received routing update from Node 0. DV = { 0 1 2 5 }
+   Node 2 @ 2.010: Updating cost to 3 via 0. Old: 10, New: 8
+   Node 2 @ 2.010: Distance table updated. Recalculating minimum costs...
+   Node 2 @ 2.010: Minimum cost vector UNCHANGED. No update sent.
+
+                    Distance Table for Node 2 (via neighbor) @ time 2.010
+   D2 |    0       1       3   
+------|-------------------
+dest 0|     3      2      9 
+dest 1|     4      1      - 
+dest 3|     8      4      2 
+
+
+EVENT time: 2.010415,  type: 1 
+Node 2 @ 2.010: Received routing update from Node 3. DV = { 5 3 2 0 }
+   Node 2 @ 2.010: Updating cost to 0 via 3. Old: 9, New: 7
+   Node 2 @ 2.010: Updating cost to 1 via 3. Old: 999, New: 5
+   Node 2 @ 2.010: Distance table updated. Recalculating minimum costs...
+   Node 2 @ 2.010: Minimum cost vector UNCHANGED. No update sent.
+
+                    Distance Table for Node 2 (via neighbor) @ time 2.010
+   D2 |    0       1       3   
+------|-------------------
+dest 0|     3      2      7 
+dest 1|     4      1      5 
+dest 3|     8      4      2 
+
+
+EVENT time: 2.011897,  type: 1 
+Node 0 @ 2.012: Received routing update from Node 3. DV = { 7 8 2 0 }
+   Node 0 @ 2.012: Updating cost to 1 via 3. Old: 999, New: 15
+   Node 0 @ 2.012: Distance table updated. Recalculating minimum costs...
+   Node 0 @ 2.012: Minimum cost vector UNCHANGED. No update sent.
+
+                    Distance Table for Node 0 (via neighbor) @ time 2.012
+   D0 |    1       2       3   
+------|----------------------------------
+dest 1|     1      4     15 
+dest 2|     2      3      9 
+dest 3|     9      5      7 
+
+
+EVENT time: 2.012514,  type: 1 
+Node 3 @ 2.013: Received routing update from Node 2. DV = { 2 1 0 2 }
+   Node 3 @ 2.013: Updating cost to 0 via 2. Old: 5, New: 4
+   Node 3 @ 2.013: Distance table updated. Recalculating minimum costs...
+   Node 3 @ 2.013: Minimum cost vector CHANGED. New DV = { 4 3 2 0 }. Notifying neighbors.
+
+              Distance Table for Node 3 (via neighbor) @ time 2.013
+   D3 |    0       2   
+------|-----------
+dest 0|     7      4 
+dest 1|     8      3 
+dest 2|     9      2 
+
+   Node 3 @ 2.013: Preparing to send DV to neighbor 0
+    TOLAYER2: source: 3, dest: 0, contents: 4 3 2 0
+   Node 3 @ 2.013: Preparing to send DV to neighbor 2
+    TOLAYER2: source: 3, dest: 2, contents: 4 3 2 0
+
+EVENT time: 2.012713,  type: 1 
+Node 2 @ 2.013: Received routing update from Node 3. DV = { 7 8 2 0 }
+   Node 2 @ 2.013: Received packet caused no change to distance table or min costs.
+
+EVENT time: 2.012874,  type: 1 
+Node 1 @ 2.013: Received routing update from Node 2. DV = { 2 1 0 2 }
+   Node 1 @ 2.013: Updating cost to 0 via 2. Old: 4, New: 3
+   Node 1 @ 2.013: Distance table updated. Recalculating minimum costs...
+   Node 1 @ 2.013: Minimum cost vector UNCHANGED. No update sent.
+
+              Distance Table for Node 1 (via neighbor) @ time 2.013
+   D1 |    0       2   
+------|-----------
+dest 0|     1      3 
+dest 2|     3      1 
+dest 3|     6      3 
+
+
+EVENT time: 2.013126,  type: 1 
+Node 0 @ 2.013: Received routing update from Node 3. DV = { 5 3 2 0 }
+   Node 0 @ 2.013: Updating cost to 0 via 3. Old: 14, New: 12
+   Node 0 @ 2.013: Updating cost to 1 via 3. Old: 15, New: 10
+   Node 0 @ 2.013: Distance table updated. Recalculating minimum costs...
+   Node 0 @ 2.013: Minimum cost vector UNCHANGED. No update sent.
+
+                    Distance Table for Node 0 (via neighbor) @ time 2.013
+   D0 |    1       2       3   
+------|----------------------------------
+dest 1|     1      4     10 
+dest 2|     2      3      9 
+dest 3|     9      5      7 
+
+
+EVENT time: 2.013752,  type: 1 
+Node 2 @ 2.014: Received routing update from Node 1. DV = { 1 0 1 8 }
+   Node 2 @ 2.014: Received packet caused no change to distance table or min costs.
+
+EVENT time: 2.016026,  type: 1 
+Node 0 @ 2.016: Received routing update from Node 1. DV = { 1 0 1 3 }
+   Node 0 @ 2.016: Updating cost to 3 via 1. Old: 9, New: 4
+   Node 0 @ 2.016: Distance table updated. Recalculating minimum costs...
+   Node 0 @ 2.016: Minimum cost vector CHANGED. New DV = { 0 1 2 4 }. Notifying neighbors.
+
+                    Distance Table for Node 0 (via neighbor) @ time 2.016
+   D0 |    1       2       3   
+------|----------------------------------
+dest 1|     1      4     10 
+dest 2|     2      3      9 
+dest 3|     4      5      7 
+
+   Node 0 @ 2.016: Preparing to send DV to neighbor 1
+    TOLAYER2: source: 0, dest: 1, contents: 0 1 2 4
+   Node 0 @ 2.016: Preparing to send DV to neighbor 2
+    TOLAYER2: source: 0, dest: 2, contents: 0 1 2 4
+   Node 0 @ 2.016: Preparing to send DV to neighbor 3
+    TOLAYER2: source: 0, dest: 3, contents: 0 1 2 4
+
+EVENT time: 3.013602,  type: 1 
+Node 0 @ 3.014: Received routing update from Node 3. DV = { 4 3 2 0 }
+   Node 0 @ 3.014: Updating cost to 0 via 3. Old: 12, New: 11
+   Node 0 @ 3.014: Distance table updated. Recalculating minimum costs...
+   Node 0 @ 3.014: Minimum cost vector UNCHANGED. No update sent.
+
+                    Distance Table for Node 0 (via neighbor) @ time 3.014
+   D0 |    1       2       3   
+------|----------------------------------
+dest 1|     1      4     10 
+dest 2|     2      3      9 
+dest 3|     4      5      7 
+
+
+EVENT time: 3.018209,  type: 1 
+Node 1 @ 3.018: Received routing update from Node 0. DV = { 0 1 2 4 }
+   Node 1 @ 3.018: Updating cost to 3 via 0. Old: 6, New: 5
+   Node 1 @ 3.018: Distance table updated. Recalculating minimum costs...
+   Node 1 @ 3.018: Minimum cost vector UNCHANGED. No update sent.
+
+              Distance Table for Node 1 (via neighbor) @ time 3.018
+   D1 |    0       2   
+------|-----------
+dest 0|     1      3 
+dest 2|     3      1 
+dest 3|     5      3 
+
+
+EVENT time: 3.021156,  type: 1 
+Node 2 @ 3.021: Received routing update from Node 0. DV = { 0 1 2 4 }
+   Node 2 @ 3.021: Updating cost to 3 via 0. Old: 8, New: 7
+   Node 2 @ 3.021: Distance table updated. Recalculating minimum costs...
+   Node 2 @ 3.021: Minimum cost vector UNCHANGED. No update sent.
+
+                    Distance Table for Node 2 (via neighbor) @ time 3.021
+   D2 |    0       1       3   
+------|-------------------
+dest 0|     3      2      7 
+dest 1|     4      1      5 
+dest 3|     7      4      2 
+
+
+EVENT time: 3.022503,  type: 1 
+Node 2 @ 3.023: Received routing update from Node 3. DV = { 4 3 2 0 }
+   Node 2 @ 3.023: Updating cost to 0 via 3. Old: 7, New: 6
+   Node 2 @ 3.023: Distance table updated. Recalculating minimum costs...
+   Node 2 @ 3.023: Minimum cost vector UNCHANGED. No update sent.
+
+                    Distance Table for Node 2 (via neighbor) @ time 3.023
+   D2 |    0       1       3   
+------|-------------------
+dest 0|     3      2      6 
+dest 1|     4      1      5 
+dest 3|     7      4      2 
+
+
+EVENT time: 3.024417,  type: 1 
+Node 3 @ 3.024: Received routing update from Node 0. DV = { 0 1 2 4 }
+   Node 3 @ 3.024: Updating cost to 3 via 0. Old: 12, New: 11
+   Node 3 @ 3.024: Distance table updated. Recalculating minimum costs...
+   Node 3 @ 3.024: Minimum cost vector UNCHANGED. No update sent.
+
+              Distance Table for Node 3 (via neighbor) @ time 3.024
+   D3 |    0       2   
+------|-----------
+dest 0|     7      4 
+dest 1|     8      3 
+dest 2|     9      2 
+
+
+EVENT time: 10000.000000,  type: 2 
+Node 0 @ 10000.000: Link handler: Link to 1 cost changed to 1
+   Node 0 @ 10000.000: Recalculating all minimum costs due to link change...
+   Node 0 @ 10000.000: Minimum cost vector UNCHANGED after link update.
+
+                    Distance Table for Node 0 (via neighbor) @ time 10000.000
+   D0 |    1       2       3   
+------|----------------------------------
+dest 1|     1      4     10 
+dest 2|     2      3      9 
+dest 3|     4      5      7 
+
+
+EVENT time: 20000.000000,  type: 2 
+Node 0 @ 20000.000: Link handler: Link to 1 cost changed to 1
+   Node 0 @ 20000.000: Recalculating all minimum costs due to link change...
+   Node 0 @ 20000.000: Minimum cost vector UNCHANGED after link update.
+
+                    Distance Table for Node 0 (via neighbor) @ time 20000.000
+   D0 |    1       2       3   
+------|----------------------------------
+dest 1|     1      4     10 
+dest 2|     2      3      9 
+dest 3|     4      5      7 
+
+
+Simulation complete.
