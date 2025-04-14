@@ -23,9 +23,9 @@ s1 s2 s3 s4 ...(5ms delay) (7ms delay) (7ms delay) (7ms delay) (5ms delay) (5ms 
 
 === Test 2: h2 → h3 ===
 
-=== Test 3: h8 → h1 ===
+=== Test 3: h8 → h1 (via DNAT) ===
 
-=== Test 4: h6 → h2 ===
+=== Test 4: h6 → h2 (via DNAT) ===
 
 +++ iPerf Test 1: h1 (server) ⇐⇒ h6 (client) +++
 
@@ -34,162 +34,193 @@ s1 s2 s3 s4 ...(5ms delay) (7ms delay) (7ms delay) (7ms delay) (5ms delay) (5ms 
 +++ iPerf Test 2: h1 (server) ⇐⇒ h6 (client) +++
 
 +++ iPerf Test 2: h8 (server) ⇐⇒ h2 (client) +++
-*** Starting CLI:
+
++++ iPerf Test 3: h1 (server) ⇐⇒ h6 (client) +++
 PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
-64 bytes from 10.0.0.6: icmp_seq=1 ttl=63 time=1176 ms
-64 bytes from 10.0.0.6: icmp_seq=2 ttl=63 time=158 ms
-64 bytes from 10.0.0.6: icmp_seq=3 ttl=63 time=70.3 ms
-64 bytes from 10.0.0.6: icmp_seq=4 ttl=63 time=72.8 ms
-64 bytes from 10.0.0.6: icmp_seq=5 ttl=63 time=70.5 ms
-64 bytes from 10.0.0.6: icmp_seq=6 ttl=63 time=82.3 ms
-64 bytes from 10.0.0.6: icmp_seq=7 ttl=63 time=70.0 ms
-64 bytes from 10.0.0.6: icmp_seq=8 ttl=63 time=80.2 ms
-64 bytes from 10.0.0.6: icmp_seq=9 ttl=63 time=84.1 ms
-64 bytes from 10.0.0.6: icmp_seq=10 ttl=63 time=73.6 ms
+64 bytes from 10.0.0.6: icmp_seq=1 ttl=63 time=116 ms
+64 bytes from 10.0.0.6: icmp_seq=2 ttl=63 time=52.9 ms
+64 bytes from 10.0.0.6: icmp_seq=3 ttl=63 time=48.8 ms
+64 bytes from 10.0.0.6: icmp_seq=4 ttl=63 time=51.4 ms
+64 bytes from 10.0.0.6: icmp_seq=5 ttl=63 time=60.3 ms
+64 bytes from 10.0.0.6: icmp_seq=6 ttl=63 time=58.8 ms
+64 bytes from 10.0.0.6: icmp_seq=7 ttl=63 time=56.3 ms
+64 bytes from 10.0.0.6: icmp_seq=8 ttl=63 time=67.6 ms
+64 bytes from 10.0.0.6: icmp_seq=9 ttl=63 time=58.2 ms
+64 bytes from 10.0.0.6: icmp_seq=10 ttl=63 time=57.9 ms
 
 --- 10.0.0.6 ping statistics ---
-10 packets transmitted, 10 received, 0% packet loss, time 9060ms
-rtt min/avg/max/mdev = 69.973/193.854/1176.383/328.477 ms, pipe 2
+10 packets transmitted, 10 received, 0% packet loss, time 9069ms
+rtt min/avg/max/mdev = 48.833/62.844/116.195/18.458 ms
 
 PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
-64 bytes from 10.0.0.4: icmp_seq=1 ttl=63 time=115 ms
-64 bytes from 10.0.0.4: icmp_seq=2 ttl=63 time=60.2 ms
-64 bytes from 10.0.0.4: icmp_seq=3 ttl=63 time=47.7 ms
-64 bytes from 10.0.0.4: icmp_seq=4 ttl=63 time=55.3 ms
-64 bytes from 10.0.0.4: icmp_seq=5 ttl=63 time=51.1 ms
-64 bytes from 10.0.0.4: icmp_seq=6 ttl=63 time=48.8 ms
-64 bytes from 10.0.0.4: icmp_seq=7 ttl=63 time=59.4 ms
-64 bytes from 10.0.0.4: icmp_seq=8 ttl=63 time=61.6 ms
-64 bytes from 10.0.0.4: icmp_seq=9 ttl=63 time=74.9 ms
-64 bytes from 10.0.0.4: icmp_seq=10 ttl=63 time=57.2 ms
+64 bytes from 10.0.0.4: icmp_seq=1 ttl=63 time=147 ms
+64 bytes from 10.0.0.4: icmp_seq=2 ttl=63 time=99.8 ms
+64 bytes from 10.0.0.4: icmp_seq=3 ttl=63 time=67.5 ms
+64 bytes from 10.0.0.4: icmp_seq=4 ttl=63 time=121 ms
+64 bytes from 10.0.0.4: icmp_seq=5 ttl=63 time=73.9 ms
+64 bytes from 10.0.0.4: icmp_seq=6 ttl=63 time=84.3 ms
+64 bytes from 10.0.0.4: icmp_seq=7 ttl=63 time=89.7 ms
+64 bytes from 10.0.0.4: icmp_seq=8 ttl=63 time=84.9 ms
+64 bytes from 10.0.0.4: icmp_seq=9 ttl=63 time=71.5 ms
+64 bytes from 10.0.0.4: icmp_seq=10 ttl=63 time=81.6 ms
 
 --- 10.0.0.4 ping statistics ---
-10 packets transmitted, 10 received, 0% packet loss, time 9035ms
-rtt min/avg/max/mdev = 47.707/63.080/114.653/18.713 ms
+10 packets transmitted, 10 received, 0% packet loss, time 9100ms
+rtt min/avg/max/mdev = 67.541/92.147/146.915/23.466 ms
 
 PING 10.0.0.10 (10.0.0.10) 56(84) bytes of data.
-64 bytes from 10.0.0.10: icmp_seq=1 ttl=64 time=84.8 ms
-64 bytes from 10.0.0.10: icmp_seq=2 ttl=64 time=67.8 ms
-64 bytes from 10.0.0.10: icmp_seq=3 ttl=64 time=36.7 ms
-64 bytes from 10.0.0.10: icmp_seq=4 ttl=64 time=44.4 ms
-64 bytes from 10.0.0.10: icmp_seq=5 ttl=64 time=41.4 ms
-64 bytes from 10.0.0.10: icmp_seq=6 ttl=64 time=43.6 ms
-64 bytes from 10.0.0.10: icmp_seq=7 ttl=64 time=41.0 ms
-64 bytes from 10.0.0.10: icmp_seq=8 ttl=64 time=42.7 ms
-64 bytes from 10.0.0.10: icmp_seq=9 ttl=64 time=52.3 ms
-64 bytes from 10.0.0.10: icmp_seq=10 ttl=64 time=51.7 ms
+64 bytes from 10.0.0.10: icmp_seq=1 ttl=64 time=128 ms
+64 bytes from 10.0.0.10: icmp_seq=2 ttl=64 time=53.1 ms
+64 bytes from 10.0.0.10: icmp_seq=3 ttl=64 time=68.1 ms
+64 bytes from 10.0.0.10: icmp_seq=4 ttl=64 time=64.1 ms
+64 bytes from 10.0.0.10: icmp_seq=5 ttl=64 time=61.6 ms
+64 bytes from 10.0.0.10: icmp_seq=6 ttl=64 time=60.6 ms
+64 bytes from 10.0.0.10: icmp_seq=7 ttl=64 time=74.1 ms
+64 bytes from 10.0.0.10: icmp_seq=8 ttl=64 time=53.6 ms
+64 bytes from 10.0.0.10: icmp_seq=9 ttl=64 time=60.1 ms
+64 bytes from 10.0.0.10: icmp_seq=10 ttl=64 time=66.3 ms
 
 --- 10.0.0.10 ping statistics ---
-10 packets transmitted, 10 received, 0% packet loss, time 9132ms
-rtt min/avg/max/mdev = 36.694/50.636/84.759/14.095 ms
+10 packets transmitted, 10 received, 0% packet loss, time 9144ms
+rtt min/avg/max/mdev = 53.083/68.917/127.519/20.440 ms
 
 PING 10.0.0.10 (10.0.0.10) 56(84) bytes of data.
-64 bytes from 10.0.0.10: icmp_seq=1 ttl=64 time=129 ms
-64 bytes from 10.0.0.10: icmp_seq=2 ttl=64 time=67.3 ms
-64 bytes from 10.0.0.10: icmp_seq=3 ttl=64 time=55.3 ms
-64 bytes from 10.0.0.10: icmp_seq=4 ttl=64 time=52.3 ms
-64 bytes from 10.0.0.10: icmp_seq=5 ttl=64 time=62.3 ms
-64 bytes from 10.0.0.10: icmp_seq=6 ttl=64 time=62.4 ms
-64 bytes from 10.0.0.10: icmp_seq=7 ttl=64 time=60.1 ms
-64 bytes from 10.0.0.10: icmp_seq=8 ttl=64 time=74.7 ms
-64 bytes from 10.0.0.10: icmp_seq=9 ttl=64 time=79.3 ms
-64 bytes from 10.0.0.10: icmp_seq=10 ttl=64 time=73.0 ms
+64 bytes from 10.0.0.10: icmp_seq=1 ttl=64 time=85.3 ms
+64 bytes from 10.0.0.10: icmp_seq=2 ttl=64 time=46.0 ms
+64 bytes from 10.0.0.10: icmp_seq=3 ttl=64 time=39.9 ms
+64 bytes from 10.0.0.10: icmp_seq=4 ttl=64 time=45.9 ms
+64 bytes from 10.0.0.10: icmp_seq=5 ttl=64 time=46.9 ms
+64 bytes from 10.0.0.10: icmp_seq=6 ttl=64 time=63.6 ms
+64 bytes from 10.0.0.10: icmp_seq=7 ttl=64 time=44.9 ms
+64 bytes from 10.0.0.10: icmp_seq=8 ttl=64 time=44.4 ms
+64 bytes from 10.0.0.10: icmp_seq=9 ttl=64 time=40.0 ms
+64 bytes from 10.0.0.10: icmp_seq=10 ttl=64 time=47.8 ms
 
 --- 10.0.0.10 ping statistics ---
-10 packets transmitted, 10 received, 0% packet loss, time 9037ms
-rtt min/avg/max/mdev = 52.349/71.617/129.309/20.867 ms
+10 packets transmitted, 10 received, 0% packet loss, time 9045ms
+rtt min/avg/max/mdev = 39.893/50.457/85.279/13.165 ms
 
 Connecting to host 10.0.0.10, port 5001
-[  5] local 10.0.0.7 port 53792 connected to 10.0.0.10 port 5001
+[  5] local 10.0.0.7 port 53806 connected to 10.0.0.10 port 5001
 [ ID] Interval           Transfer     Bitrate         Retr  Cwnd
-[  5]   0.00-1.00   sec  1.66 MBytes  13.9 Mbits/sec    2    158 KBytes       
-[  5]   1.00-2.00   sec  2.67 MBytes  22.4 Mbits/sec    0    272 KBytes       
-[  5]   2.00-3.00   sec  3.60 MBytes  30.1 Mbits/sec    0    421 KBytes       
-[  5]   3.00-4.00   sec  4.54 MBytes  38.1 Mbits/sec    0    592 KBytes       
-[  5]   4.00-5.00   sec  11.2 MBytes  94.6 Mbits/sec    0   1.04 MBytes       
-[  5]   5.00-6.00   sec  18.8 MBytes   157 Mbits/sec    0   1.87 MBytes       
-[  5]   6.00-7.00   sec  30.0 MBytes   252 Mbits/sec    0   3.19 MBytes       
-[  5]   7.00-8.00   sec  50.0 MBytes   420 Mbits/sec    0   5.73 MBytes       
-[  5]   8.00-9.00   sec  66.2 MBytes   555 Mbits/sec    0   8.04 MBytes       
-[  5]   9.00-10.00  sec  71.2 MBytes   597 Mbits/sec    0   8.04 MBytes       
+[  5]   0.00-1.00   sec   799 KBytes  6.52 Mbits/sec    0    157 KBytes       
+[  5]   1.00-2.00   sec  4.29 MBytes  36.0 Mbits/sec    0    342 KBytes       
+[  5]   2.00-3.00   sec  11.5 MBytes  96.7 Mbits/sec    0    782 KBytes       
+[  5]   3.00-4.00   sec  18.8 MBytes   157 Mbits/sec    0   1.59 MBytes       
+[  5]   4.00-5.00   sec  27.5 MBytes   231 Mbits/sec    0   2.72 MBytes       
+[  5]   5.00-6.01   sec  58.8 MBytes   489 Mbits/sec    0   5.65 MBytes       
+[  5]   6.01-7.01   sec  70.0 MBytes   588 Mbits/sec    1   8.05 MBytes       
+[  5]   7.01-8.00   sec  75.0 MBytes   634 Mbits/sec    1   8.05 MBytes       
+[  5]   8.00-9.00   sec  87.5 MBytes   734 Mbits/sec    0   8.05 MBytes       
+[  5]   9.00-10.00  sec   104 MBytes   870 Mbits/sec    0   8.05 MBytes       
 - - - - - - - - - - - - - - - - - - - - - - - - -
 [ ID] Interval           Transfer     Bitrate         Retr
-[  5]   0.00-10.00  sec   260 MBytes   218 Mbits/sec    2             sender
-[  5]   0.00-10.07  sec   255 MBytes   212 Mbits/sec                  receiver
+[  5]   0.00-10.00  sec   458 MBytes   384 Mbits/sec    2             sender
+[  5]   0.00-10.07  sec   453 MBytes   378 Mbits/sec                  receiver
 
 iperf Done.
 
 Connecting to host 10.0.0.9, port 5002
-[  5] local 10.1.1.3 port 52374 connected to 10.0.0.9 port 5002
+[  5] local 10.1.1.3 port 52388 connected to 10.0.0.9 port 5002
 [ ID] Interval           Transfer     Bitrate         Retr  Cwnd
-[  5]   0.00-1.01   sec  2.27 MBytes  18.9 Mbits/sec    0    175 KBytes       
-[  5]   1.01-2.00   sec  4.29 MBytes  36.2 Mbits/sec    0    402 KBytes       
-[  5]   2.00-3.01   sec  13.3 MBytes   111 Mbits/sec    0    919 KBytes       
-[  5]   3.01-4.00   sec  26.2 MBytes   221 Mbits/sec    0   1.99 MBytes       
-[  5]   4.00-5.00   sec  45.0 MBytes   377 Mbits/sec    0   4.13 MBytes       
-[  5]   5.00-6.00   sec  58.8 MBytes   492 Mbits/sec    0   7.05 MBytes       
-[  5]   6.00-7.00   sec  92.5 MBytes   777 Mbits/sec    0   8.09 MBytes       
-[  5]   7.00-8.00   sec  87.5 MBytes   732 Mbits/sec    0   8.09 MBytes       
-[  5]   8.00-9.00   sec  83.8 MBytes   703 Mbits/sec    0   8.09 MBytes       
-[  5]   9.00-10.01  sec   119 MBytes   992 Mbits/sec    0   8.09 MBytes       
+[  5]   0.00-1.00   sec  13.8 MBytes   115 Mbits/sec    0   1.49 MBytes       
+[  5]   1.00-2.01   sec  32.5 MBytes   272 Mbits/sec    0   2.94 MBytes       
+[  5]   2.01-3.00   sec  57.5 MBytes   485 Mbits/sec    0   5.79 MBytes       
+[  5]   3.00-4.00   sec  91.2 MBytes   763 Mbits/sec    0   8.00 MBytes       
+[  5]   4.00-5.00   sec  96.2 MBytes   810 Mbits/sec    0   8.00 MBytes       
+[  5]   5.00-6.00   sec  93.8 MBytes   785 Mbits/sec    0   8.00 MBytes       
+[  5]   6.00-7.00   sec   104 MBytes   873 Mbits/sec    0   8.00 MBytes       
+[  5]   7.00-8.00   sec  95.0 MBytes   796 Mbits/sec    0   8.43 MBytes       
+[  5]   8.00-9.01   sec  80.0 MBytes   666 Mbits/sec    0   8.43 MBytes       
+[  5]   9.01-10.00  sec  67.5 MBytes   571 Mbits/sec    0   8.43 MBytes       
 - - - - - - - - - - - - - - - - - - - - - - - - -
 [ ID] Interval           Transfer     Bitrate         Retr
-[  5]   0.00-10.01  sec   532 MBytes   446 Mbits/sec    0             sender
-[  5]   0.00-10.20  sec   529 MBytes   435 Mbits/sec                  receiver
+[  5]   0.00-10.00  sec   731 MBytes   613 Mbits/sec    0             sender
+[  5]   0.00-10.09  sec   726 MBytes   604 Mbits/sec                  receiver
 
 iperf Done.
 
 Connecting to host 10.0.0.10, port 5001
-[  5] local 10.0.0.7 port 53796 connected to 10.0.0.10 port 5001
+[  5] local 10.0.0.7 port 53810 connected to 10.0.0.10 port 5001
 [ ID] Interval           Transfer     Bitrate         Retr  Cwnd
-[  5]   0.00-1.00   sec  2.85 MBytes  23.9 Mbits/sec    0    267 KBytes       
-[  5]   1.00-2.03   sec  5.34 MBytes  43.5 Mbits/sec    0    503 KBytes       
-[  5]   2.03-3.00   sec  10.0 MBytes  86.4 Mbits/sec    0    904 KBytes       
-[  5]   3.00-4.00   sec  16.2 MBytes   136 Mbits/sec    0   1.59 MBytes       
-[  5]   4.00-5.00   sec  30.0 MBytes   252 Mbits/sec    0   2.87 MBytes       
-[  5]   5.00-6.00   sec  51.2 MBytes   430 Mbits/sec    0   5.40 MBytes       
-[  5]   6.00-7.00   sec  71.2 MBytes   597 Mbits/sec    0   8.03 MBytes       
-[  5]   7.00-8.00   sec  85.0 MBytes   714 Mbits/sec    0   8.03 MBytes       
-[  5]   8.00-9.00   sec  92.5 MBytes   775 Mbits/sec    0   8.03 MBytes       
-[  5]   9.00-10.00  sec  91.2 MBytes   763 Mbits/sec    0   8.03 MBytes       
+[  5]   0.00-1.00   sec  8.75 MBytes  73.3 Mbits/sec    0    665 KBytes       
+[  5]   1.00-2.03   sec  17.5 MBytes   143 Mbits/sec    0   1.35 MBytes       
+[  5]   2.03-3.00   sec  32.5 MBytes   280 Mbits/sec    0   2.80 MBytes       
+[  5]   3.00-4.01   sec  73.8 MBytes   615 Mbits/sec    0   6.42 MBytes       
+[  5]   4.01-5.00   sec  90.0 MBytes   760 Mbits/sec    0   8.04 MBytes       
+[  5]   5.00-6.00   sec  92.5 MBytes   775 Mbits/sec    0   8.04 MBytes       
+[  5]   6.00-7.00   sec  82.5 MBytes   693 Mbits/sec    0   8.04 MBytes       
+[  5]   7.00-8.01   sec  85.0 MBytes   709 Mbits/sec    0   8.04 MBytes       
+[  5]   8.01-9.00   sec  76.2 MBytes   643 Mbits/sec    0   8.04 MBytes       
+[  5]   9.00-10.00  sec  66.2 MBytes   556 Mbits/sec    1   8.04 MBytes       
 - - - - - - - - - - - - - - - - - - - - - - - - -
 [ ID] Interval           Transfer     Bitrate         Retr
-[  5]   0.00-10.00  sec   456 MBytes   382 Mbits/sec    0             sender
-[  5]   0.00-10.08  sec   452 MBytes   376 Mbits/sec                  receiver
+[  5]   0.00-10.00  sec   625 MBytes   524 Mbits/sec    1             sender
+[  5]   0.00-10.06  sec   620 MBytes   517 Mbits/sec                  receiver
 
 iperf Done.
 
 Connecting to host 10.0.0.9, port 5002
-[  5] local 10.1.1.3 port 52378 connected to 10.0.0.9 port 5002
+[  5] local 10.1.1.3 port 52392 connected to 10.0.0.9 port 5002
 [ ID] Interval           Transfer     Bitrate         Retr  Cwnd
-[  5]   0.00-1.00   sec  4.96 MBytes  41.6 Mbits/sec    0    349 KBytes       
-[  5]   1.00-2.00   sec  8.78 MBytes  73.6 Mbits/sec    0    762 KBytes       
-[  5]   2.00-3.00   sec  20.0 MBytes   168 Mbits/sec    0   1.55 MBytes       
-[  5]   3.00-4.00   sec  37.5 MBytes   314 Mbits/sec    0   3.22 MBytes       
-[  5]   4.00-5.00   sec  80.0 MBytes   672 Mbits/sec    0   7.20 MBytes       
-[  5]   5.00-6.00   sec   101 MBytes   850 Mbits/sec    0   8.01 MBytes       
-[  5]   6.00-7.00   sec  85.0 MBytes   712 Mbits/sec    0   8.01 MBytes       
-[  5]   7.00-8.00   sec  85.0 MBytes   713 Mbits/sec    0   8.01 MBytes       
-[  5]   8.00-9.00   sec  86.2 MBytes   725 Mbits/sec   98   8.01 MBytes       
-[  5]   9.00-10.00  sec  82.5 MBytes   690 Mbits/sec    0   8.01 MBytes       
+[  5]   0.00-1.02   sec  1.98 MBytes  16.3 Mbits/sec    2    170 KBytes       
+[  5]   1.02-2.00   sec  3.42 MBytes  29.1 Mbits/sec    0    304 KBytes       
+[  5]   2.00-3.01   sec  5.65 MBytes  47.2 Mbits/sec    0    574 KBytes       
+[  5]   3.01-4.03   sec  10.0 MBytes  81.9 Mbits/sec    0    983 KBytes       
+[  5]   4.03-5.01   sec  16.2 MBytes   140 Mbits/sec    0   1.64 MBytes       
+[  5]   5.01-6.00   sec  27.5 MBytes   232 Mbits/sec    0   2.80 MBytes       
+[  5]   6.00-7.00   sec  45.0 MBytes   376 Mbits/sec    0   5.03 MBytes       
+[  5]   7.00-8.00   sec  68.8 MBytes   579 Mbits/sec    0   8.21 MBytes       
+[  5]   8.00-9.00   sec  60.0 MBytes   503 Mbits/sec    0   8.21 MBytes       
+[  5]   9.00-10.00  sec  77.5 MBytes   648 Mbits/sec    0   8.21 MBytes       
 - - - - - - - - - - - - - - - - - - - - - - - - -
 [ ID] Interval           Transfer     Bitrate         Retr
-[  5]   0.00-10.00  sec   591 MBytes   496 Mbits/sec   98             sender
-[  5]   0.00-10.05  sec   585 MBytes   488 Mbits/sec                  receiver
+[  5]   0.00-10.00  sec   316 MBytes   265 Mbits/sec    2             sender
+[  5]   0.00-10.07  sec   312 MBytes   260 Mbits/sec                  receiver
+
+iperf Done.
+
+
++++ iPerf Test 3: h8 (server) ⇐⇒ h2 (client) +++
+*** Starting CLI:
+Connecting to host 10.0.0.10, port 5001
+[  5] local 10.0.0.7 port 53814 connected to 10.0.0.10 port 5001
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.00   sec  2.77 MBytes  23.3 Mbits/sec    2    202 KBytes       
+[  5]   1.00-2.00   sec  5.22 MBytes  43.8 Mbits/sec    0    420 KBytes       
+[  5]   2.00-3.00   sec  11.3 MBytes  95.1 Mbits/sec    0    875 KBytes       
+[  5]   3.00-4.00   sec  21.2 MBytes   178 Mbits/sec    0   1.78 MBytes       
+[  5]   4.00-5.00   sec  46.2 MBytes   386 Mbits/sec    0   3.88 MBytes       
+[  5]   5.00-6.00   sec  73.8 MBytes   621 Mbits/sec    0   7.59 MBytes       
+[  5]   6.00-7.00   sec  93.8 MBytes   785 Mbits/sec    0   8.13 MBytes       
+[  5]   7.00-8.00   sec  91.2 MBytes   767 Mbits/sec    0   8.13 MBytes       
+[  5]   8.00-9.00   sec  91.2 MBytes   764 Mbits/sec    0   8.13 MBytes       
+[  5]   9.00-10.00  sec  97.5 MBytes   819 Mbits/sec    0   8.13 MBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.00  sec   534 MBytes   448 Mbits/sec    2             sender
+[  5]   0.00-11.05  sec   531 MBytes   403 Mbits/sec                  receiver
+
+iperf Done.
+
+Connecting to host 10.0.0.9, port 5002
+[  5] local 10.1.1.3 port 52396 connected to 10.0.0.9 port 5002
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.00   sec  4.90 MBytes  41.1 Mbits/sec    0    471 KBytes       
+[  5]   1.00-2.00   sec  8.74 MBytes  73.4 Mbits/sec    0    868 KBytes       
+[  5]   2.00-3.00   sec  17.5 MBytes   147 Mbits/sec    0   1.60 MBytes       
+[  5]   3.00-4.00   sec  25.0 MBytes   209 Mbits/sec    0   2.60 MBytes       
+[  5]   4.00-5.00   sec  41.2 MBytes   346 Mbits/sec    0   4.68 MBytes       
+[  5]   5.00-6.00   sec  67.5 MBytes   568 Mbits/sec    0   8.01 MBytes       
+[  5]   6.00-7.00   sec  75.0 MBytes   629 Mbits/sec    0   8.02 MBytes       
+[  5]   7.00-8.00   sec  78.8 MBytes   660 Mbits/sec    0   8.02 MBytes       
+[  5]   8.00-9.00   sec  66.2 MBytes   556 Mbits/sec    0   8.02 MBytes       
+[  5]   9.00-10.00  sec  82.5 MBytes   693 Mbits/sec    0   8.02 MBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.00  sec   467 MBytes   392 Mbits/sec    0             sender
+[  5]   0.00-10.07  sec   463 MBytes   386 Mbits/sec                  receiver
 
 iperf Done.
 
 mininet> 
-Interrupt
-mininet> 
-Interrupt
-mininet> 
-*** Stopping 1 controllers
-c0 
-*** Stopping 14 links
-..............
-*** Stopping 4 switches
-s1 s2 s3 s4 
-*** Stopping 9 hosts
-h1 h2 h3 h4 h5 h6 h7 h8 h9 
-*** Done
