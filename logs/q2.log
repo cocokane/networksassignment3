@@ -1,0 +1,194 @@
+*** Creating network
+*** Adding controller
+*** Adding hosts:
+h1 h2 h3 h4 h5 h6 h7 h8 h9 
+*** Adding switches:
+s1 s2 s3 s4 
+*** Adding links:
+(5ms delay) (5ms delay) (h1, h9) (5ms delay) (5ms delay) (h2, h9) (5ms delay) (5ms delay) (h3, s2) (5ms delay) (5ms delay) (h4, s2) (5ms delay) (5ms delay) (h5, s3) (5ms delay) (5ms delay) (h6, s3) (5ms delay) (5ms delay) (h7, s4) (5ms delay) (5ms delay) (h8, s4) (5ms delay) (5ms delay) (h9, s1) (7ms delay) (7ms delay) (s1, s2) (7ms delay) (7ms delay) (s1, s3) (7ms delay) (7ms delay) (s2, s3) (7ms delay) (7ms delay) (s3, s4) (7ms delay) (7ms delay) (s4, s1) 
+*** Configuring hosts
+h1 h2 h3 h4 h5 h6 h7 h8 h9 
+
++++ NAT configuration on host h9 complete. Internal hosts now use 10.1.1.1 as gateway. +++
+*** Starting controller
+c0 
+*** Starting 4 switches
+s1 s2 s3 s4 ...(5ms delay) (7ms delay) (7ms delay) (7ms delay) (5ms delay) (5ms delay) (7ms delay) (7ms delay) (5ms delay) (5ms delay) (7ms delay) (7ms delay) (7ms delay) (5ms delay) (5ms delay) (7ms delay) (7ms delay) 
+
++++ Activating Spanning Tree Protocol (STP) on all switches +++
+
++++ Network stabilization in progress... waiting 30 seconds +++
+
+=== Test 1: Internal host h1 pinging external host h5 ===
+
+=== Test 2: Internal host h2 pinging external host h3 ===
+
+=== Test 3: External host h8 pinging internal host h1 ===
+
+=== Test 4: External host h6 pinging internal host h2 ===
+
++++ iPerf3 Test Set 1: h1 (server) and h6 (client), 120 seconds +++
+
++++ iPerf3 Test Set 1: h8 (server) and h2 (client), 120 seconds +++
+
++++ iPerf3 Test Set 2: h1 (server) and h6 (client), 120 seconds +++
+
++++ iPerf3 Test Set 2: h8 (server) and h2 (client), 120 seconds +++
+*** Starting CLI:
+PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
+64 bytes from 10.0.0.6: icmp_seq=1 ttl=63 time=152 ms
+64 bytes from 10.0.0.6: icmp_seq=2 ttl=63 time=72.2 ms
+64 bytes from 10.0.0.6: icmp_seq=3 ttl=63 time=70.8 ms
+64 bytes from 10.0.0.6: icmp_seq=4 ttl=63 time=74.8 ms
+64 bytes from 10.0.0.6: icmp_seq=5 ttl=63 time=78.7 ms
+64 bytes from 10.0.0.6: icmp_seq=6 ttl=63 time=79.0 ms
+64 bytes from 10.0.0.6: icmp_seq=7 ttl=63 time=98.8 ms
+64 bytes from 10.0.0.6: icmp_seq=8 ttl=63 time=84.3 ms
+64 bytes from 10.0.0.6: icmp_seq=9 ttl=63 time=77.9 ms
+64 bytes from 10.0.0.6: icmp_seq=10 ttl=63 time=74.8 ms
+64 bytes from 10.0.0.6: icmp_seq=11 ttl=63 time=73.9 ms
+64 bytes from 10.0.0.6: icmp_seq=12 ttl=63 time=86.4 ms
+64 bytes from 10.0.0.6: icmp_seq=13 ttl=63 time=82.7 ms
+64 bytes from 10.0.0.6: icmp_seq=14 ttl=63 time=86.0 ms
+64 bytes from 10.0.0.6: icmp_seq=15 ttl=63 time=80.6 ms
+64 bytes from 10.0.0.6: icmp_seq=16 ttl=63 time=72.8 ms
+64 bytes from 10.0.0.6: icmp_seq=17 ttl=63 time=75.0 ms
+64 bytes from 10.0.0.6: icmp_seq=18 ttl=63 time=80.9 ms
+64 bytes from 10.0.0.6: icmp_seq=19 ttl=63 time=84.1 ms
+64 bytes from 10.0.0.6: icmp_seq=20 ttl=63 time=76.0 ms
+64 bytes from 10.0.0.6: icmp_seq=21 ttl=63 time=78.4 ms
+64 bytes from 10.0.0.6: icmp_seq=22 ttl=63 time=71.1 ms
+64 bytes from 10.0.0.6: icmp_seq=23 ttl=63 time=69.0 ms
+64 bytes from 10.0.0.6: icmp_seq=24 ttl=63 time=69.4 ms
+64 bytes from 10.0.0.6: icmp_seq=25 ttl=63 time=92.3 ms
+64 bytes from 10.0.0.6: icmp_seq=26 ttl=63 time=80.9 ms
+64 bytes from 10.0.0.6: icmp_seq=27 ttl=63 time=80.5 ms
+64 bytes from 10.0.0.6: icmp_seq=28 ttl=63 time=76.5 ms
+64 bytes from 10.0.0.6: icmp_seq=29 ttl=63 time=83.6 ms
+64 bytes from 10.0.0.6: icmp_seq=30 ttl=63 time=78.0 ms
+
+--- 10.0.0.6 ping statistics ---
+30 packets transmitted, 30 received, 0% packet loss, time 29162ms
+rtt min/avg/max/mdev = 69.027/81.389/152.289/14.691 ms
+
+PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
+64 bytes from 10.0.0.4: icmp_seq=1 ttl=63 time=130 ms
+64 bytes from 10.0.0.4: icmp_seq=2 ttl=63 time=48.8 ms
+64 bytes from 10.0.0.4: icmp_seq=3 ttl=63 time=60.1 ms
+64 bytes from 10.0.0.4: icmp_seq=4 ttl=63 time=55.9 ms
+64 bytes from 10.0.0.4: icmp_seq=5 ttl=63 time=54.0 ms
+64 bytes from 10.0.0.4: icmp_seq=6 ttl=63 time=165 ms
+64 bytes from 10.0.0.4: icmp_seq=7 ttl=63 time=56.8 ms
+64 bytes from 10.0.0.4: icmp_seq=8 ttl=63 time=64.5 ms
+64 bytes from 10.0.0.4: icmp_seq=9 ttl=63 time=65.7 ms
+64 bytes from 10.0.0.4: icmp_seq=10 ttl=63 time=60.6 ms
+64 bytes from 10.0.0.4: icmp_seq=11 ttl=63 time=59.3 ms
+64 bytes from 10.0.0.4: icmp_seq=12 ttl=63 time=66.7 ms
+64 bytes from 10.0.0.4: icmp_seq=13 ttl=63 time=51.2 ms
+64 bytes from 10.0.0.4: icmp_seq=14 ttl=63 time=58.8 ms
+64 bytes from 10.0.0.4: icmp_seq=15 ttl=63 time=57.7 ms
+64 bytes from 10.0.0.4: icmp_seq=16 ttl=63 time=61.3 ms
+64 bytes from 10.0.0.4: icmp_seq=17 ttl=63 time=66.4 ms
+64 bytes from 10.0.0.4: icmp_seq=18 ttl=63 time=70.0 ms
+64 bytes from 10.0.0.4: icmp_seq=19 ttl=63 time=52.9 ms
+64 bytes from 10.0.0.4: icmp_seq=20 ttl=63 time=74.6 ms
+64 bytes from 10.0.0.4: icmp_seq=21 ttl=63 time=149 ms
+64 bytes from 10.0.0.4: icmp_seq=22 ttl=63 time=52.1 ms
+64 bytes from 10.0.0.4: icmp_seq=23 ttl=63 time=119 ms
+64 bytes from 10.0.0.4: icmp_seq=24 ttl=63 time=56.6 ms
+64 bytes from 10.0.0.4: icmp_seq=25 ttl=63 time=114 ms
+64 bytes from 10.0.0.4: icmp_seq=26 ttl=63 time=66.1 ms
+64 bytes from 10.0.0.4: icmp_seq=27 ttl=63 time=63.3 ms
+64 bytes from 10.0.0.4: icmp_seq=28 ttl=63 time=56.9 ms
+64 bytes from 10.0.0.4: icmp_seq=29 ttl=63 time=61.5 ms
+64 bytes from 10.0.0.4: icmp_seq=30 ttl=63 time=74.4 ms
+
+--- 10.0.0.4 ping statistics ---
+30 packets transmitted, 30 received, 0% packet loss, time 29257ms
+rtt min/avg/max/mdev = 48.810/73.089/164.775/29.506 ms
+
+PING 10.1.1.2 (10.1.1.2) 56(84) bytes of data.
+64 bytes from 10.1.1.2: icmp_seq=1 ttl=63 time=172 ms
+64 bytes from 10.1.1.2: icmp_seq=2 ttl=63 time=80.8 ms
+64 bytes from 10.1.1.2: icmp_seq=3 ttl=63 time=101 ms
+64 bytes from 10.1.1.2: icmp_seq=4 ttl=63 time=86.3 ms
+64 bytes from 10.1.1.2: icmp_seq=5 ttl=63 time=101 ms
+64 bytes from 10.1.1.2: icmp_seq=6 ttl=63 time=101 ms
+64 bytes from 10.1.1.2: icmp_seq=7 ttl=63 time=100 ms
+64 bytes from 10.1.1.2: icmp_seq=8 ttl=63 time=103 ms
+64 bytes from 10.1.1.2: icmp_seq=9 ttl=63 time=97.8 ms
+64 bytes from 10.1.1.2: icmp_seq=10 ttl=63 time=105 ms
+64 bytes from 10.1.1.2: icmp_seq=11 ttl=63 time=92.1 ms
+64 bytes from 10.1.1.2: icmp_seq=12 ttl=63 time=85.9 ms
+64 bytes from 10.1.1.2: icmp_seq=13 ttl=63 time=93.8 ms
+64 bytes from 10.1.1.2: icmp_seq=14 ttl=63 time=148 ms
+64 bytes from 10.1.1.2: icmp_seq=15 ttl=63 time=93.4 ms
+64 bytes from 10.1.1.2: icmp_seq=16 ttl=63 time=105 ms
+64 bytes from 10.1.1.2: icmp_seq=17 ttl=63 time=95.9 ms
+64 bytes from 10.1.1.2: icmp_seq=18 ttl=63 time=93.9 ms
+64 bytes from 10.1.1.2: icmp_seq=19 ttl=63 time=103 ms
+64 bytes from 10.1.1.2: icmp_seq=20 ttl=63 time=109 ms
+64 bytes from 10.1.1.2: icmp_seq=21 ttl=63 time=109 ms
+64 bytes from 10.1.1.2: icmp_seq=22 ttl=63 time=89.2 ms
+64 bytes from 10.1.1.2: icmp_seq=23 ttl=63 time=91.5 ms
+64 bytes from 10.1.1.2: icmp_seq=24 ttl=63 time=88.6 ms
+64 bytes from 10.1.1.2: icmp_seq=25 ttl=63 time=102 ms
+64 bytes from 10.1.1.2: icmp_seq=26 ttl=63 time=140 ms
+64 bytes from 10.1.1.2: icmp_seq=27 ttl=63 time=111 ms
+64 bytes from 10.1.1.2: icmp_seq=28 ttl=63 time=98.5 ms
+64 bytes from 10.1.1.2: icmp_seq=29 ttl=63 time=98.4 ms
+64 bytes from 10.1.1.2: icmp_seq=30 ttl=63 time=91.3 ms
+
+--- 10.1.1.2 ping statistics ---
+30 packets transmitted, 30 received, 0% packet loss, time 29187ms
+rtt min/avg/max/mdev = 80.769/102.915/172.292/18.847 ms
+
+PING 10.1.1.3 (10.1.1.3) 56(84) bytes of data.
+64 bytes from 10.1.1.3: icmp_seq=1 ttl=63 time=137 ms
+64 bytes from 10.1.1.3: icmp_seq=2 ttl=63 time=78.6 ms
+64 bytes from 10.1.1.3: icmp_seq=3 ttl=63 time=86.1 ms
+64 bytes from 10.1.1.3: icmp_seq=4 ttl=63 time=82.2 ms
+64 bytes from 10.1.1.3: icmp_seq=5 ttl=63 time=75.3 ms
+64 bytes from 10.1.1.3: icmp_seq=6 ttl=63 time=93.8 ms
+64 bytes from 10.1.1.3: icmp_seq=7 ttl=63 time=66.3 ms
+64 bytes from 10.1.1.3: icmp_seq=8 ttl=63 time=77.1 ms
+64 bytes from 10.1.1.3: icmp_seq=9 ttl=63 time=66.7 ms
+64 bytes from 10.1.1.3: icmp_seq=10 ttl=63 time=68.7 ms
+64 bytes from 10.1.1.3: icmp_seq=11 ttl=63 time=70.0 ms
+64 bytes from 10.1.1.3: icmp_seq=12 ttl=63 time=70.4 ms
+64 bytes from 10.1.1.3: icmp_seq=13 ttl=63 time=69.8 ms
+64 bytes from 10.1.1.3: icmp_seq=14 ttl=63 time=68.7 ms
+64 bytes from 10.1.1.3: icmp_seq=15 ttl=63 time=71.9 ms
+64 bytes from 10.1.1.3: icmp_seq=16 ttl=63 time=65.9 ms
+64 bytes from 10.1.1.3: icmp_seq=17 ttl=63 time=69.4 ms
+64 bytes from 10.1.1.3: icmp_seq=18 ttl=63 time=66.4 ms
+64 bytes from 10.1.1.3: icmp_seq=19 ttl=63 time=65.3 ms
+64 bytes from 10.1.1.3: icmp_seq=20 ttl=63 time=80.1 ms
+64 bytes from 10.1.1.3: icmp_seq=21 ttl=63 time=78.6 ms
+64 bytes from 10.1.1.3: icmp_seq=22 ttl=63 time=73.5 ms
+64 bytes from 10.1.1.3: icmp_seq=23 ttl=63 time=68.5 ms
+64 bytes from 10.1.1.3: icmp_seq=24 ttl=63 time=79.2 ms
+64 bytes from 10.1.1.3: icmp_seq=25 ttl=63 time=75.7 ms
+64 bytes from 10.1.1.3: icmp_seq=26 ttl=63 time=80.9 ms
+64 bytes from 10.1.1.3: icmp_seq=27 ttl=63 time=78.0 ms
+64 bytes from 10.1.1.3: icmp_seq=28 ttl=63 time=71.0 ms
+64 bytes from 10.1.1.3: icmp_seq=29 ttl=63 time=68.0 ms
+64 bytes from 10.1.1.3: icmp_seq=30 ttl=63 time=67.5 ms
+
+--- 10.1.1.3 ping statistics ---
+30 packets transmitted, 30 received, 0% packet loss, time 29139ms
+rtt min/avg/max/mdev = 65.323/75.668/136.506/13.129 ms
+
+
+mininet> 
+Interrupt
+mininet> 
+*** Stopping 1 controllers
+c0 
+*** Stopping 14 links
+..............
+*** Stopping 4 switches
+s1 s2 s3 s4 
+*** Stopping 9 hosts
+h1 h2 h3 h4 h5 h6 h7 h8 h9 
+*** Done
