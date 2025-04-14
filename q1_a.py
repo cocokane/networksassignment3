@@ -44,16 +44,8 @@ def run():
     os.system('mn -c')
     topo = CustomRoutingTopo()
     net = Mininet(topo=topo, controller=OVSController, link=TCLink, switch=OVSSwitch)
-    
-    # Start the network once
+
     net.start()
-
-    # Enable STP on all switches
-    for sw in ['s1', 's2', 's3', 's4']:
-        sw_obj = net.get(sw)
-        sw_obj.cmd('ovs-vsctl set Bridge {} stp_enable=true'.format(sw))
-
-    # Do not call net.start() again!
 
     time.sleep(5)
     print("\nRunning Ping Tests with 30-second intervals:")
@@ -63,20 +55,20 @@ def run():
     h5, h7 = net.get('h5', 'h7')
     h6, h8 = net.get('h6', 'h8')
 
+    print("Waiting 30 seconds for STP to converge...")
     time.sleep(30)
     for i in range(3):
-        # print(f"\nRound {i+1}: h3 -> h1")
-        # print(h3.cmd('ping -w 30 %s' % h1.IP()))
-        # time.sleep(5)
+        print(f"\nRound {i+1}: Ping h3 -> h1")
+        print(h3.cmd('ping -w 30 %s' % h1.IP()))
+        time.sleep(30)
 
-        print(f"\nRound {i+1}: h5 -> h7")
-        print(h5.cmd('ping -w 30 %s' % h7.IP()))
-        time.sleep(5)
+        # print(f"\nRound {i+1}: Ping h5 -> h7")
+        # print(h5.cmd('ping -w 30 %s' % h7.IP()))
+        # time.sleep(30)
 
-
-        # print(f"\nRound {i+1}: h8 -> h2")
+        # print(f"\nRound {i+1}: Ping h8 -> h2")
         # print(h8.cmd('ping -w 30 %s' % h2.IP()))
-        # time.sleep(5)
+        # time.sleep(30)
 
     CLI(net)
     net.stop()

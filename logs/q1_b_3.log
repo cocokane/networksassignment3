@@ -1,0 +1,155 @@
+*** Removing excess controllers/ofprotocols/ofdatapaths/pings/noxes
+killall controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+killall -9 controller ofprotocol ofdatapath ping nox_corelt-nox_core ovs-openflowd ovs-controllerovs-testcontroller udpbwtest mnexec ivs ryu-manager 2> /dev/null
+pkill -9 -f "sudo mnexec"
+*** Removing junk from /tmp
+rm -f /tmp/vconn* /tmp/vlogs* /tmp/*.out /tmp/*.log
+*** Removing old X11 tunnels
+*** Removing excess kernel datapaths
+ps ax | egrep -o 'dp[0-9]+' | sed 's/dp/nl:/'
+***  Removing OVS datapaths
+ovs-vsctl --timeout=1 list-br
+ovs-vsctl --timeout=1 list-br
+*** Removing all links of the pattern foo-ethX
+ip link show | egrep -o '([-_.[:alnum:]]+-eth[[:digit:]]+)'
+ip link show
+*** Killing stale mininet node processes
+pkill -9 -f mininet:
+*** Shutting down stale tunnels
+pkill -9 -f Tunnel=Ethernet
+pkill -9 -f .ssh/mn
+rm -f ~/.ssh/mn/*
+*** Cleanup complete.
+*** Creating network
+*** Adding controller
+*** Adding hosts:
+h1 h2 h3 h4 h5 h6 h7 h8 
+*** Adding switches:
+s1 s2 s3 s4 
+*** Adding links:
+(5ms delay) (5ms delay) (h1, s1) (5ms delay) (5ms delay) (h2, s1) (5ms delay) (5ms delay) (h3, s2) (5ms delay) (5ms delay) (h4, s2) (5ms delay) (5ms delay) (h5, s3) (5ms delay) (5ms delay) (h6, s3) (5ms delay) (5ms delay) (h7, s4) (5ms delay) (5ms delay) (h8, s4) (7ms delay) (7ms delay) (s1, s2) (7ms delay) (7ms delay) (s1, s3) (7ms delay) (7ms delay) (s2, s3) (7ms delay) (7ms delay) (s3, s4) (7ms delay) (7ms delay) (s4, s1) 
+*** Configuring hosts
+h1 h2 h3 h4 h5 h6 h7 h8 
+*** Starting controller
+c0 
+*** Starting 4 switches
+s1 s2 s3 s4 ...(5ms delay) (5ms delay) (7ms delay) (7ms delay) (7ms delay) (5ms delay) (5ms delay) (7ms delay) (7ms delay) (5ms delay) (5ms delay) (7ms delay) (7ms delay) (7ms delay) (5ms delay) (5ms delay) (7ms delay) (7ms delay) 
+*** Starting CLI:
+
+Running Ping Tests with 30-second intervals:
+Waiting 30 seconds for STP to converge...
+
+Round 1: Ping h8 -> h2
+PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=84.4 ms
+64 bytes from 10.0.0.3: icmp_seq=2 ttl=64 time=52.0 ms
+64 bytes from 10.0.0.3: icmp_seq=3 ttl=64 time=57.7 ms
+64 bytes from 10.0.0.3: icmp_seq=4 ttl=64 time=46.6 ms
+64 bytes from 10.0.0.3: icmp_seq=5 ttl=64 time=43.1 ms
+64 bytes from 10.0.0.3: icmp_seq=6 ttl=64 time=43.0 ms
+64 bytes from 10.0.0.3: icmp_seq=7 ttl=64 time=58.3 ms
+64 bytes from 10.0.0.3: icmp_seq=8 ttl=64 time=49.9 ms
+64 bytes from 10.0.0.3: icmp_seq=9 ttl=64 time=44.0 ms
+64 bytes from 10.0.0.3: icmp_seq=10 ttl=64 time=41.3 ms
+64 bytes from 10.0.0.3: icmp_seq=11 ttl=64 time=50.9 ms
+64 bytes from 10.0.0.3: icmp_seq=12 ttl=64 time=63.6 ms
+64 bytes from 10.0.0.3: icmp_seq=13 ttl=64 time=45.9 ms
+64 bytes from 10.0.0.3: icmp_seq=14 ttl=64 time=49.8 ms
+64 bytes from 10.0.0.3: icmp_seq=15 ttl=64 time=65.4 ms
+64 bytes from 10.0.0.3: icmp_seq=16 ttl=64 time=44.3 ms
+64 bytes from 10.0.0.3: icmp_seq=17 ttl=64 time=42.1 ms
+64 bytes from 10.0.0.3: icmp_seq=18 ttl=64 time=41.9 ms
+64 bytes from 10.0.0.3: icmp_seq=19 ttl=64 time=44.9 ms
+64 bytes from 10.0.0.3: icmp_seq=20 ttl=64 time=51.8 ms
+64 bytes from 10.0.0.3: icmp_seq=21 ttl=64 time=44.0 ms
+64 bytes from 10.0.0.3: icmp_seq=22 ttl=64 time=43.3 ms
+64 bytes from 10.0.0.3: icmp_seq=23 ttl=64 time=36.5 ms
+64 bytes from 10.0.0.3: icmp_seq=24 ttl=64 time=40.9 ms
+64 bytes from 10.0.0.3: icmp_seq=25 ttl=64 time=47.3 ms
+64 bytes from 10.0.0.3: icmp_seq=26 ttl=64 time=41.8 ms
+64 bytes from 10.0.0.3: icmp_seq=27 ttl=64 time=38.3 ms
+64 bytes from 10.0.0.3: icmp_seq=28 ttl=64 time=42.8 ms
+64 bytes from 10.0.0.3: icmp_seq=29 ttl=64 time=41.9 ms
+64 bytes from 10.0.0.3: icmp_seq=30 ttl=64 time=39.3 ms
+
+--- 10.0.0.3 ping statistics ---
+30 packets transmitted, 30 received, 0% packet loss, time 29204ms
+rtt min/avg/max/mdev = 36.519/47.904/84.352/9.695 ms
+
+
+Round 2: Ping h8 -> h2
+PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=56.6 ms
+64 bytes from 10.0.0.3: icmp_seq=2 ttl=64 time=44.8 ms
+64 bytes from 10.0.0.3: icmp_seq=3 ttl=64 time=43.9 ms
+64 bytes from 10.0.0.3: icmp_seq=4 ttl=64 time=47.5 ms
+64 bytes from 10.0.0.3: icmp_seq=5 ttl=64 time=40.2 ms
+64 bytes from 10.0.0.3: icmp_seq=6 ttl=64 time=44.4 ms
+64 bytes from 10.0.0.3: icmp_seq=7 ttl=64 time=36.6 ms
+64 bytes from 10.0.0.3: icmp_seq=8 ttl=64 time=40.4 ms
+64 bytes from 10.0.0.3: icmp_seq=9 ttl=64 time=37.4 ms
+64 bytes from 10.0.0.3: icmp_seq=10 ttl=64 time=44.7 ms
+64 bytes from 10.0.0.3: icmp_seq=11 ttl=64 time=38.4 ms
+64 bytes from 10.0.0.3: icmp_seq=12 ttl=64 time=35.7 ms
+64 bytes from 10.0.0.3: icmp_seq=13 ttl=64 time=39.4 ms
+64 bytes from 10.0.0.3: icmp_seq=14 ttl=64 time=45.7 ms
+64 bytes from 10.0.0.3: icmp_seq=15 ttl=64 time=41.5 ms
+64 bytes from 10.0.0.3: icmp_seq=16 ttl=64 time=38.4 ms
+64 bytes from 10.0.0.3: icmp_seq=17 ttl=64 time=43.6 ms
+64 bytes from 10.0.0.3: icmp_seq=18 ttl=64 time=38.7 ms
+64 bytes from 10.0.0.3: icmp_seq=19 ttl=64 time=38.8 ms
+64 bytes from 10.0.0.3: icmp_seq=20 ttl=64 time=40.1 ms
+64 bytes from 10.0.0.3: icmp_seq=21 ttl=64 time=40.2 ms
+64 bytes from 10.0.0.3: icmp_seq=22 ttl=64 time=38.7 ms
+64 bytes from 10.0.0.3: icmp_seq=23 ttl=64 time=37.0 ms
+64 bytes from 10.0.0.3: icmp_seq=24 ttl=64 time=40.3 ms
+64 bytes from 10.0.0.3: icmp_seq=25 ttl=64 time=39.0 ms
+64 bytes from 10.0.0.3: icmp_seq=26 ttl=64 time=41.3 ms
+64 bytes from 10.0.0.3: icmp_seq=27 ttl=64 time=44.5 ms
+64 bytes from 10.0.0.3: icmp_seq=28 ttl=64 time=37.6 ms
+64 bytes from 10.0.0.3: icmp_seq=29 ttl=64 time=39.6 ms
+64 bytes from 10.0.0.3: icmp_seq=30 ttl=64 time=39.6 ms
+
+--- 10.0.0.3 ping statistics ---
+30 packets transmitted, 30 received, 0% packet loss, time 29068ms
+rtt min/avg/max/mdev = 35.679/41.151/56.637/4.104 ms
+
+
+Round 3: Ping h8 -> h2
+PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=51.4 ms
+64 bytes from 10.0.0.3: icmp_seq=2 ttl=64 time=44.4 ms
+64 bytes from 10.0.0.3: icmp_seq=3 ttl=64 time=48.5 ms
+64 bytes from 10.0.0.3: icmp_seq=4 ttl=64 time=46.1 ms
+64 bytes from 10.0.0.3: icmp_seq=5 ttl=64 time=43.4 ms
+64 bytes from 10.0.0.3: icmp_seq=6 ttl=64 time=41.8 ms
+64 bytes from 10.0.0.3: icmp_seq=7 ttl=64 time=45.3 ms
+64 bytes from 10.0.0.3: icmp_seq=8 ttl=64 time=44.5 ms
+64 bytes from 10.0.0.3: icmp_seq=9 ttl=64 time=41.8 ms
+64 bytes from 10.0.0.3: icmp_seq=10 ttl=64 time=39.6 ms
+64 bytes from 10.0.0.3: icmp_seq=11 ttl=64 time=44.8 ms
+64 bytes from 10.0.0.3: icmp_seq=12 ttl=64 time=42.5 ms
+64 bytes from 10.0.0.3: icmp_seq=13 ttl=64 time=45.6 ms
+64 bytes from 10.0.0.3: icmp_seq=14 ttl=64 time=43.9 ms
+64 bytes from 10.0.0.3: icmp_seq=15 ttl=64 time=47.7 ms
+64 bytes from 10.0.0.3: icmp_seq=16 ttl=64 time=51.0 ms
+64 bytes from 10.0.0.3: icmp_seq=17 ttl=64 time=49.9 ms
+64 bytes from 10.0.0.3: icmp_seq=18 ttl=64 time=44.1 ms
+64 bytes from 10.0.0.3: icmp_seq=19 ttl=64 time=44.0 ms
+64 bytes from 10.0.0.3: icmp_seq=20 ttl=64 time=45.2 ms
+64 bytes from 10.0.0.3: icmp_seq=21 ttl=64 time=37.6 ms
+64 bytes from 10.0.0.3: icmp_seq=22 ttl=64 time=45.1 ms
+64 bytes from 10.0.0.3: icmp_seq=23 ttl=64 time=42.8 ms
+64 bytes from 10.0.0.3: icmp_seq=24 ttl=64 time=41.3 ms
+64 bytes from 10.0.0.3: icmp_seq=25 ttl=64 time=36.9 ms
+64 bytes from 10.0.0.3: icmp_seq=26 ttl=64 time=36.4 ms
+64 bytes from 10.0.0.3: icmp_seq=27 ttl=64 time=41.2 ms
+64 bytes from 10.0.0.3: icmp_seq=28 ttl=64 time=39.4 ms
+64 bytes from 10.0.0.3: icmp_seq=29 ttl=64 time=41.3 ms
+64 bytes from 10.0.0.3: icmp_seq=30 ttl=64 time=37.9 ms
+
+--- 10.0.0.3 ping statistics ---
+30 packets transmitted, 30 received, 0% packet loss, time 29265ms
+rtt min/avg/max/mdev = 36.352/43.517/51.413/3.830 ms
+
+mininet> 
