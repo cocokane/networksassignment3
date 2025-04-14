@@ -219,8 +219,19 @@ Connecting to host 10.0.0.9, port 5002
 - - - - - - - - - - - - - - - - - - - - - - - - -
 [ ID] Interval           Transfer     Bitrate         Retr
 [  5]   0.00-10.00  sec   467 MBytes   392 Mbits/sec    0             sender
-[  5]   0.00-10.07  sec   463 MBytes   386 Mbits/sec                  receiver
-
-iperf Done.
-
+[  5]   0.00-10.07  sec   463 MBytes   386 Mbits/sec   
+Interrupt
 mininet> 
+Interrupt
+mininet> 
+Interrupt
+mininet> 
+*** Stopping 1 controllers
+c0 
+*** Stopping 14 links
+..............
+*** Stopping 4 switches
+s1 s2 s3 s4 
+*** Stopping 9 hosts
+h1 h2 h3 h4 h5 h6 h7 h8 h9 
+*** Done
