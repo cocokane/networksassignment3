@@ -1,5 +1,5 @@
 # Computer Networks Assignment 3
-# This repository contains the code and documentation for the Computer Networks Assignment 3, which includes network simulation and analysis using Mininet and custom routing algorithms.
+#### This repository contains the code and documentation for the Computer Networks Assignment 3, which includes network simulation and analysis using Mininet and custom routing algorithms.
 By Yash Kokane - 20110237
 
 ## Execution Instructions
@@ -39,7 +39,7 @@ gcc distance_vector.c node0.c node1.c node2.c node3.c -o dvsim
 
 **Analysis Procedure:**
 1. Observe the distance table convergence through printed output and debug logs.
-2. Validate the simulation results with the provided analysis in the report.
+2. Analyze the convergence time and stability of the routing tables.
 
 ## Requirements
 - Linux OS (Ubuntu preferred)
